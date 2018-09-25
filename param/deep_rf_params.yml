@@ -1,0 +1,16 @@
+%YAML:1.0
+priors: !!opencv-matrix
+   rows: 10
+   cols: 1
+   dt: f
+   data: [ 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. ]
+max_depth: 10
+min_sample_count: 10
+regression_accuracy: 0.
+use_surrogates: 0
+max_categories: 15
+calc_var_importance: 0
+nactive_vars: 50
+max_num_of_trees_in_the_forest: 50
+forest_accuracy: 9.9999997764825821e-03
+termcrit_type: 3

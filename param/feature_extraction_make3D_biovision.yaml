@@ -1,0 +1,10 @@
+feature_extraction: { feature_type: "deep",
+                     nscales: 1,
+                     extract_layer: "CAM_conv",
+                     mean_filename: "$PROJECT_PATH/data/imagenet_mean.binaryproto",
+                     net_filename: "$PROJECT_PATH/data/deploy_googlenetCAM_noInner.prototxt",
+                     weights_filename: "$PROJECT_PATH/data/imagenet_googleletCAM_train_iter_120000.caffemodel",
+		     nb_superpixels: 450,
+                     make3d_scale: 20,
+                     downsampling_ratio: 2
+                   }

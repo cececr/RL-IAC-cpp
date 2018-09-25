@@ -1,0 +1,22 @@
+depth_segmentation: { intDebug: 1,
+                            strFileFloorPlane: "$PROJECT_PATH/data/floor.dat",
+                            fltMaxDistFromKinect: 3.0,
+                            fltRANSACFloorDistThresh: 0.05,
+                            fltVGLeafSize: 0.06,
+                            fltNEMaxDepth: 0.02,
+                            fltNESmoothing: 10.0,
+                            intFloorMinNbrPoints: 50000,
+                            fltCBFloorMaxPlaneDist: 2.0,
+                            fltCBFloorMinPlaneDist: 0.05,
+                            fltFloorAngleThresh: 0.9,
+                            fltFloorDistThresh: 0.05,
+                            fltRANSACWallsDistThresh: 0.1,
+                            fltMinDiagWall: 1.5,
+                            fltWallAngleThresh: 0.05,
+                            fltECDistance: 0.1,
+                            fltObjMinSize: 0.2,
+                            fltObjMaxSize: 1.5,
+                            int2dBorderTolerance: 10,
+                            flt3dBorderTolerance: 0.02
+                            }
+

@@ -1,0 +1,2 @@
+fp = fillPage(gcf, 'margins', [0 0 0 0], 'papersize', [11 5.5]);
+print -painters -dpdf -r600 error-rate-noframes-RGBD.pdf

@@ -1,0 +1,135 @@
+# This template can be read by class SaliencyfileParser.
+# Sharps (#) are comment symbols. Please do not use any other comment format, it won't be recognized
+# A line containing a sharp symbol will be ignored by the parser, wherever the position.
+
+####################################
+# Environment variables
+####################################
+$PROJECT_PATH = "/home/celine/QT-WORKSPACE/RL_IAC_SaliencyLearning"
+$DATASET_PATH = "/home/celine/Datasets"
+$MODEL_PATH = "/home/celine/Libs/caffe/data"
+
+#####################################
+##### Param files and dataset #######
+# [inputPath] path to the images folder
+# [inputRegionPath] path to the input-name -> region correspondance table
+# [regionMapPath] path to the region map and action costs
+# [segParamPath] path to the segmentation parameters
+# [learningParamPath] path to the learning parameters
+# [bottomupParamPath] path to the bottom up saliency parameters
+# [featureParamFile] if "Deep", file containing deep feature params
+#####################################
+[inputPath] = "$DATASET_PATH/BioVision_sequence"
+[inputRegionPath] = "$DATASET_PATH/BioVision_sequence/inputs_region_map_sequence_9.dat"
+#[regionMapPath] = "$DATASET_PATH/RL_IAC/ENSTA-Sequences/ENSTA-IROS2016-BiggerRegions/navigationGraph.dat"
+[segParamPath] = "$PROJECT_PATH/param/depth_segmentation_floor.yaml"
+[learningParamPath] = "$PROJECT_PATH/param/saliency_learning_OnlineRF.yaml"
+[bottomupParamPath] = "$PROJECT_PATH/param/bottom_up_BMS_saliency.yaml"
+[featureParamFile] = "$PROJECT_PATH/param/feature_extraction_CAM1scale.yaml"
+
+
+#####################################
+##### related to output data #####
+#[outputLogFile] name of the output log file. If empty, takes param filename root
+#[outputSaliencyDir] directory to save saliency maps or segmentation. Please create it before running
+#####################################
+[outputLogFile] = "Biovision_log/Offline_f1_1_log.txt"
+[outputSaliencyDir] = "saliency_maps"
+
+#####
+# [actionType] type of action selection strategy (int). See ActionSelectionM.cpp
+# SELECT_CHRONO = 0; SELECT_RANDOM = 1; SELECT_IAC = 2; SELECT_RLIAC = 3;
+# [intr_motivation_type] intrinsic motivation criterion (int) see RegionsM.cpp
+# INTR_MOTIV_PROGRESS = 0; INTR_MOTIV_NOVELTY = 1; INTR_MOTIV_UNCERTAINTY = 2; INTR_MOTIV_ERROR = 3;
+# [useBackward] use forward or backward for error estimation (backward is better !). 1:yes, 0:no
+# [evaluationMetrics] metrics to estimate error (int) see Evaluation.h
+# F1_SCORE = 0; ACCURACY = 1; HARMONIC_MEAN = 2;
+#####
+[actionType] = 0
+[intr_motivation_type] = 0
+[useBackward] = 1
+[evaluationMetrics] = 1
+
+
+#####################################
+##### Related to the experiment #####
+# [nbSteps] number of steps in the experiments (int)
+# [initialPosition] initial frame index (int)
+#####################################
+[nbSteps] = 1000
+[initialPosition] = 0;
+
+#####################################
+##### related to segmentation #####
+# [useSegImages] use segmented images : 1 calculate mask at each step : 0
+# [useFloorTracker] use floor tracker when segmenting at each step : 0 no, 1 yes
+#####################################
+[useSegImages] = 1
+[useFloorTracker] = 1
+
+#####################################
+##### Related to feature extraction #####
+# [featureType] type of features extract : "Make3D", "Deep" or "Itti"
+# [useSuperpixels] 1 if you want to reconstruct saliency map based on superpixels
+#####################################
+[featureType] = "Deep"
+[useSuperpixels] = 0
+
+#####################################
+##### related to learning #####
+# [intr_motivation_type] intrinsic motivation criterion (int) see RegionsM.cpp
+# INTR_MOTIV_PROGRESS = 0; INTR_MOTIV_NOVELTY = 1; INTR_MOTIV_UNCERTAINTY = 2; INTR_MOTIV_ERROR = 3;
+# [useBackward] use forward or backward for error estimation (backward is better !). 1:yes, 0:no
+
+# [usePerFrameEval] Calculate average error by averaging the score of each frame (instead of score of each pixel) 1:yes, 0:no
+# [useLongTerm] Use backward long term evaluation (by the way, please do not use it) 1:yes, 0:no
+# [modelName] file name where to save the learned model
+#####################################
+
+
+
+[usePerFrameEval] = 1
+[useLongTerm] = 0
+[modelName] = "models/onlineRF_online.yml"
+
+#####################################
+##### related to action selection and displacement #####
+# [actionType] type of action selection strategy (int). See ActionSelectionM.cpp
+# SELECT_CHRONO = 0; SELECT_RANDOM = 1; SELECT_IAC = 2; SELECT_RLIAC = 3;
+# [nbLearnPerStay] number of input to acquire when "learning" action is selected (int)
+# [learnAtEachStep] do you want to keep learning during robot displacement (instead, wait for target to be reached) 1:yes, 0:no
+# [RNDActionSelection] percentage of actions selected randomly (float [0:1])
+# [RNDPositionSelection] percentage of positions selected randomly (float [0:1])
+# [learnMoveRatio] arbitrary increase the time difference beetween learning and moving (int)
+#####################################
+
+[nbLearnPerStay] = 1
+[learnAtEachStep] = 1
+[RNDActionSelection] = 0.1
+[RNDPositionSelection] = 0.
+[learnMoveRatio] = 1
+
+#####################################
+##### display options #####
+# [displayFrames] if string contains "rgb" and/or "seg" and/or "sal", displays rgb input/segmentation mask/saliency map
+# [displayRegionState] draw internal learning state 1:yes, 0:no
+# [displayWorldMap] draw world map and associated reward 1:yes, 0:no
+# [useFusedMap] draw the fused segmentation+saliency map
+#####################################
+[displayFrames] = "rgb + seg + sal "
+[displayRegionState] = 1
+[displayWorldMap] = 0
+[useFusedMap] = 0
+
+#####################################
+##### related to evaluation #####
+#[usePerRegionEval] 1:yes, 0:no
+#[evalSubsamplingRate] = N. speed up evaluation by evaluating 1 pixel out of N (int)
+#[evalInputPath] same as [inputPath], but for evaluation set. if empty, takes [inputPath]
+#[evalRegionPath] same as [inputRegionPath], but for evaluation set. if empty, takes [inputRegionPath]
+#####################################
+[usePerRegionEval] = 1
+[evalSubsamplingRate] = 2
+#[evalInputPath] = ""
+#[evalRegionPath] = ""
+

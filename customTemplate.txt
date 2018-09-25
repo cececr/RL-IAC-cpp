@@ -1,0 +1,11 @@
+/**
+ * \file %FILENAME%
+ * \brief %CLASS%
+ * \author Céline Craye
+ * \version 0.1
+ * \date %MONTH% / %DAY% / %YEAR%
+ *
+ * Custom DOxygen-style template. Provide here a description of the file
+ *
+ */
+

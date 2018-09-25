@@ -1,0 +1,3 @@
+bottom_up_saliency: { method: "BMS",
+                      param_file: "$PROJECT_PATH/param/coffee_cfg.xml"
+}

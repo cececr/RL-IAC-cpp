@@ -1,0 +1,11 @@
+saliency_learning: { saliency_resampling_factor: 1,
+                     enhance_display_factor: 0,
+                     data_resampling_factor: 30,
+                     data_ignore_unknowns: 1,
+                     max_samples: 0,
+                     samples_balanced_data: 0,
+                     samples_random_replace: 1,
+                     classifier_type: "RandomForest",
+                     classifier_params: "$PROJECT_PATH/param/deep_rf_params.yml" ,
+                     output_model_filename: "rf_saliency.yml"
+                   }

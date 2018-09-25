@@ -1,0 +1,21 @@
+- C++ 11, function to_string()
+- Class saliencyFeatureItti plutot que saliencyMapItti
+- Class CvGabor2
+- PtCldSegmentation SetInputCloud(cv::Mat depth_map)
+- LearningM estimateSaliencyFromFeatureMap, default int subsampling_fact = 1
+- LearningM.h and other headers -> using namespace cv hors du header
+- dataformater.cpp -> convert segmentation_map to CV_32F
+- dataformater -> get_buffer_length
+- learningM.cpp -> save() ou load() -> return res;
+- FloorTracker -> fonction get_ptr_floor_coeff
+- FloorTracker -> update_frame(cv::Mat rgb_frame, cv::Mat depth_map)
+- OnlineRF, classifier LearningM -> Fixed and improved onlineRF
+- FloorTracker -> force floor mask to be 0 at the top of the image : param assumeFloorDown
+- ptCldSegmentation -> added 2Dbounding boxes
+
+
+TODO
+- mettre la reconstruction de la carte de saillance dans le dataFormater
+- mettre des typedef pour éviter les types à rallonge
+- l'ordre d'initialisation dans saliencylearningexperiment peut mener à des erreurs non soulevées...> mettre des init et des check init avant de lancer un prog
+- fixer le removeWall de PtCldSegmentation en forçant le pointcloud à être continu  dans l'image (faire du clustering)
