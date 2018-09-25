@@ -1,4 +1,4 @@
-# The Saliency Learning ROS package
+# The Saliency Learning and RL-IAC repository
 *v0.1.0*
 
 ## Description
@@ -28,13 +28,12 @@ An executable able to run and evaluate saliency and RL-IAC exploration.
 ## Usage
 
 ### Download data folder
-smb://diskstation/data_thales/GitResources/personals/celine_craye/saliency_learning/data
 
 ### Preparing dataset
 To get started, you need a dataset correctly formated. Currently two datasets are available at 
-[link] smb://diskstation/data_thales/GitResources/personals/celine_craye/rosbag-IROS
+[link] rosbag-IROS
 and
-[link] smb://diskstation/data_thales/GitResources/personals/celine_craye/RGBD-scebes-RLIAC
+[link] RGBD-scebes-RLIAC
 
 A dataset should contain at least:
 * an image_data folder with rgb and depth images. RGB images should be png format (img000.png for example), and corresponding depth images should have the same name with **_depth** at the end (img000_depth.png). You can either compute the segmentation online, or use pre-computed one. For that, segmentation mask should have the same name as rgb images with _GT extension (img000_GT.png).
